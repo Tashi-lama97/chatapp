@@ -61,7 +61,6 @@ const Messages = ({ reciverId, reload }) => {
       getAllMessages(token, user._id, reciverId).then((data) => {
         if (data.error) {
         } else {
-          console.log();
           setMessagesData(data);
         }
       });
