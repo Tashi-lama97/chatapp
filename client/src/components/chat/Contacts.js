@@ -95,4 +95,4 @@ const Contacts = ({ changeSection, section, setMessgeInfo }) => {
   );
 };
 
-export default Contacts;
+export default React.memo(Contacts);

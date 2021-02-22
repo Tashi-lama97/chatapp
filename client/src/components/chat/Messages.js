@@ -56,30 +56,21 @@ const Messages = ({ reciverId, reload }) => {
     }
   }, [reload]);
 
-  // useEffect(() => {
-  //   const intervel = setInterval(() => {
-  //     getAllMessages(token, user._id, reciverId).then((data) => {
-  //       if (data.error) {
-  //         setIndicators({
-  //           ...indicators,
-  //           error: data.error,
-  //           success: false,
-  //         });
-  //       } else {
-  //         setIndicators({
-  //           ...indicators,
-  //           error: false,
-  //           success: true,
-  //         });
-  //         setMessagesData(data);
-  //       }
-  //     });
-  //   }, 5000);
+  useEffect(() => {
+    const intervel = setInterval(() => {
+      getAllMessages(token, user._id, reciverId).then((data) => {
+        if (data.error) {
+        } else {
+          console.log();
+          setMessagesData(data);
+        }
+      });
+    }, 5000);
 
-  //   return () => {
-  //     clearInterval(intervel);
-  //   };
-  // }, []);
+    return () => {
+      clearInterval(intervel);
+    };
+  }, [reciverId]);
 
   return (
     <div className="messagesSection">
@@ -108,4 +99,4 @@ const Messages = ({ reciverId, reload }) => {
   );
 };
 
-export default Messages;
+export default React.memo(Messages);

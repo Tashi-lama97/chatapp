@@ -10,7 +10,6 @@ import {
 
 const ChatHistory = ({ setMessgeInfo, reload }) => {
   const { token, user } = isAuthenticated();
-
   const [chatHistory, setChatHistory] = useState([]);
 
   const [historyIndicators, setHistoryIndicators] = useState({
@@ -66,26 +65,20 @@ const ChatHistory = ({ setMessgeInfo, reload }) => {
     }
   }, [reload]);
 
-  // useEffect(() => {
-  //   const intervel = setInterval(() => {
-  //     getChatHistory(token, user._id).then((data) => {
-  //       if (data.error) {
-  //         setHistoryIndicators({
-  //           ...historyIndicators,
-  //           historySuccess: false,
-  //           historyError: data.error,
-  //         });
-  //         NotificationManager.error(data.error, "Error", 10000);
-  //       } else {
-  //         setChatHistory(data);
-  //       }
-  //     });
-  //   }, 5000);
-
-  //   return () => {
-  //     clearInterval(intervel);
-  //   };
-  // }, []);
+  useEffect(() => {
+    const intervel = setInterval(() => {
+      getChatHistory(token, user._id).then((data) => {
+        if (data.error) {
+          NotificationManager.error(data.error, "Error", 10000);
+        } else {
+          setChatHistory(data);
+        }
+      });
+    }, 5000);
+    return () => {
+      clearInterval(intervel);
+    };
+  }, []);
 
   return (
     <>
@@ -148,4 +141,4 @@ const ChatHistory = ({ setMessgeInfo, reload }) => {
   );
 };
 
-export default ChatHistory;
+export default React.memo(ChatHistory);

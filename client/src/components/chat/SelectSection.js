@@ -37,4 +37,4 @@ const SelectSection = ({ changeSection, section }) => {
   );
 };
 
-export default SelectSection;
+export default React.memo(SelectSection);

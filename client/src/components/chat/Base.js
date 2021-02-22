@@ -165,4 +165,4 @@ const Base = ({ history }) => {
   );
 };
 
-export default Base;
+export default React.memo(Base);

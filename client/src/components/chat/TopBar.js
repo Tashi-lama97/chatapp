@@ -12,4 +12,4 @@ const TopBar = ({ name }) => {
   );
 };
 
-export default TopBar;
+export default React.memo(TopBar);

@@ -147,4 +147,4 @@ const AddContact = ({ changeSection, section }) => {
   );
 };
 
-export default AddContact;
+export default React.memo(AddContact);
